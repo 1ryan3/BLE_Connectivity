@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">BLE Connectivity</string>
+    <string name="main_screen">Connect to device</string>
+    <string name="connect_button">Connect to LED Controller</string>
+    <string name="red_hint">"0 - 255"</string>
+    <string name="red_button">"Change color values"</string>
+
+    <string-array name="led_selection_array">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+</resources>
