@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DeviceConnectActivity"></activity>
+        <activity android:name=".editGroup"></activity>
+        <activity android:name=".DeviceConnectedActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,4 +24,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
