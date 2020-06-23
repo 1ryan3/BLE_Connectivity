@@ -14,7 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".editGroup"></activity>
+        <service
+            android:name=".BLEInterface"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity android:name=".editGroup" />
         <activity android:name=".DeviceConnectedActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

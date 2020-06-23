@@ -2,10 +2,12 @@
     <string name="app_name">BLE Connectivity</string>
     <string name="main_screen">Connect to device</string>
     <string name="connect_button">Connect to LED Controller</string>
-    <string name="red_hint">"0 - 255"</string>
+
     <string name="disconnect_button">"Disconnect"</string>
     <string name="edit_strip">"Edit group"</string>
-
+    <string name="redSlider">"Red Value"</string>
+    <string name="greenSlider">"Green Value"</string>
+    <string name="blueSlider">"Blue Value"</string>
     <string-array name="led_selection_array">
         <item>Group 1</item>
         <item>Group 2</item>

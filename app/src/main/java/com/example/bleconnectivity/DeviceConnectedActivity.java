@@ -1,8 +1,16 @@
 package com.example.bleconnectivity;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,6 +20,9 @@ import android.widget.Spinner;
 public class DeviceConnectedActivity extends AppCompatActivity {
 
     private String selectedLED;
+    BLEInterface mService;
+    boolean mIsBound = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +43,7 @@ public class DeviceConnectedActivity extends AppCompatActivity {
         Button btnDisconnect = (Button) findViewById(R.id.disconnect);
         btnDisconnect.setOnClickListener(disconnectHandler);
 
-
+        bindService();
 
     }
 
@@ -48,7 +59,9 @@ public class DeviceConnectedActivity extends AppCompatActivity {
     private View.OnClickListener disconnectHandler = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-
+            mService.disconnectBLE();
+            Intent intentMain = new Intent(DeviceConnectedActivity.this, MainActivity.class);
+            DeviceConnectedActivity.this.startActivity(intentMain);
         }
     };
 
@@ -64,6 +77,27 @@ public class DeviceConnectedActivity extends AppCompatActivity {
         }
     };
 
+    private void bindService(){
+        Intent serviceBindIntent =  new Intent(this, BLEInterface.class);
+        bindService(serviceBindIntent, serviceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    private ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName className, IBinder iBinder) {
+
+            // We've bound to MyService, cast the IBinder and get MyBinder instance
+            BLEInterface.LocalBinder binder = (BLEInterface.LocalBinder) iBinder;
+            mService = binder.getService();
+            mIsBound = true;
+
+        }
+        @Override
+        public void onServiceDisconnected(ComponentName arg0) {
+
+            mIsBound = false;
+        }
+    };
 
 
 }
