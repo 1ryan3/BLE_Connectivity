@@ -18,7 +18,7 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -30,7 +30,7 @@ public class BLEInterface extends Service {
 
     private BluetoothLeScanner bluetoothLeScanner;
     private BluetoothGattService bluetoothGattService;
-    private BluetoothGatt gatt;
+
 
     private ScanSettings scanSettings;
     private UUID serviceUuid;
@@ -51,14 +51,14 @@ public class BLEInterface extends Service {
     public void onCreate() {
         super.onCreate();
         if(names != null) {
-            filters = new ArrayList<>(); // CHANGE TO SEARCH BY BLE UUID INSTEAD OF NAME
+            filters = new ArrayList<>();
             for (String name : names) {
                 ScanFilter filter = new ScanFilter.Builder().setDeviceName(name).build();
                 filters.add(filter);
             }
         }
 
-        scanSettings = new ScanSettings.Builder() // CHANGE TO SEARCH BY BLE UUID INSTEAD OF NAME
+        scanSettings = new ScanSettings.Builder()
                 .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
                 .setCallbackType(ScanSettings.CALLBACK_TYPE_FIRST_MATCH)
                 .setMatchMode(ScanSettings.MATCH_MODE_AGGRESSIVE)
@@ -117,7 +117,6 @@ public class BLEInterface extends Service {
             super.onServicesDiscovered(gatt, status);
             bluetoothGatt = gatt;
             if (status == BluetoothGatt.GATT_SUCCESS) {
-                //bleStatus = true;
                 bluetoothGattService = gatt.getService(serviceUuid);
             }
         }
@@ -129,33 +128,12 @@ public class BLEInterface extends Service {
 
             ScanRecord record = result.getScanRecord();
             if (record != null) {
-                //if(record.getDeviceName() != null) {
                 bluetoothLeScanner.stopScan(this);
                 BluetoothDevice controller = result.getDevice();
                 controller.connectGatt(getApplicationContext(), true, new LEDControllerInstance());
-                //}
             }
         }
     }
 }
 
-/*
-EditText textBoxTemp = findViewById(R.id.Red);
-            String colorTemp = textBoxTemp.getText().toString();
-            textBoxTemp.getText().clear();
-            int len = colorTemp.length();
 
-            byte[] data = new byte[1 + (len / 2)]; //encode color and group
-
-            for (int i = 0; i < len; i += 2) { //encode color and group
-                data[i / 2] = (byte) ((Character.digit(colorTemp.charAt(i), 16) << 4)
-                        + Character.digit(colorTemp.charAt(i+1), 16));
-            }
-
-            BluetoothGattCharacteristic tempChar = bluetoothGattService.getCharacteristic(serviceUuid);
-
-            if ( tempChar.setValue(data)) {
-                bluetoothGatt.writeCharacteristic(bluetoothGattService.getCharacteristic(serviceUuid));
-            }
-
- */

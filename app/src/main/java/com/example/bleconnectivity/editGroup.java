@@ -9,9 +9,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.EditText;
+
 
 
 import com.google.android.material.slider.Slider;
@@ -25,7 +23,6 @@ public class editGroup extends AppCompatActivity {
     private float greenValue = 255;
     private float blueValue = 255;
     private String groupNum;
-    private EditText test;
     BLEInterface mService;
     boolean mIsBound = false;
 
@@ -59,8 +56,6 @@ public class editGroup extends AppCompatActivity {
         public void onStopTrackingTouch(@NonNull Slider slider) {
             redValue = slider.getValue();
             setColor();
-            /*String temp = Float.toString(redValue);
-            test.setText(temp);*/
         }
     };
 
@@ -74,8 +69,6 @@ public class editGroup extends AppCompatActivity {
         public void onStopTrackingTouch(@NonNull Slider slider) {
             greenValue = slider.getValue();
             setColor();
-            /*String temp = Float.toString(redValue);
-            test.setText(temp);*/
         }
     };
 
@@ -89,8 +82,6 @@ public class editGroup extends AppCompatActivity {
         public void onStopTrackingTouch(@NonNull Slider slider) {
             blueValue = slider.getValue();
             setColor();
-            /*String temp = Float.toString(redValue);
-            test.setText(temp);*/
         }
     };
 

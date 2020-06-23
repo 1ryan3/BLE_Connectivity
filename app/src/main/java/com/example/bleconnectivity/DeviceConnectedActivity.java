@@ -2,9 +2,7 @@ package com.example.bleconnectivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothGatt;
-import android.bluetooth.BluetoothManager;
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
