@@ -8,6 +8,12 @@
     <string name="redSlider">"Red Value"</string>
     <string name="greenSlider">"Green Value"</string>
     <string name="blueSlider">"Blue Value"</string>
+    <string name="redValue">"R"</string>
+    <string name="blueValue">"B"</string>
+    <string name="greenValue">"G"</string>
+    <string name="redActual">""</string>
+    <string name="blueActual">""</string>
+    <string name="greenActual">""</string>
     <string-array name="led_selection_array">
         <item>Group 1</item>
         <item>Group 2</item>

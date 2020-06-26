@@ -6,6 +6,88 @@
     android:layout_height="match_parent"
     tools:context=".editGroup">
 
+    <View
+        android:id="@+id/colorSquare"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:visibility="visible"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/greenDisp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/greenDisp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="259dp"
+        android:layout_marginBottom="64dp"
+        android:text="@string/greenValue"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/redSlider"
+        app:layout_constraintEnd_toStartOf="@+id/blueDisp"
+        app:layout_constraintStart_toEndOf="@+id/redDisp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/redDisp"
+        android:layout_width="9dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="144dp"
+        android:text="@string/redValue"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/greenDisp"
+        app:layout_constraintStart_toStartOf="@+id/redSlider"
+        app:layout_constraintTop_toTopOf="@+id/greenDisp" />
+
+    <TextView
+        android:id="@+id/blueDisp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="144dp"
+        android:text="@string/blueValue"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/greenDisp"
+        app:layout_constraintEnd_toEndOf="@+id/redSlider"
+        app:layout_constraintTop_toTopOf="@+id/greenDisp" />
+
+    <TextView
+        android:id="@+id/redDispVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/redActual"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/redDisp"
+        app:layout_constraintStart_toStartOf="@+id/redDisp"
+        app:layout_constraintTop_toBottomOf="@+id/redDisp" />
+
+    <TextView
+        android:id="@+id/blueDispVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/blueActual"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/blueDisp"
+        app:layout_constraintStart_toStartOf="@+id/blueDisp"
+        app:layout_constraintTop_toBottomOf="@+id/blueDisp" />
+
+    <TextView
+        android:id="@+id/greenDispVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/greenActual"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/greenDisp"
+        app:layout_constraintStart_toStartOf="@+id/greenDisp"
+        app:layout_constraintTop_toBottomOf="@+id/greenDisp" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -20,18 +102,20 @@
     <com.google.android.material.slider.Slider
         android:id="@+id/redSlider"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="320dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="320dp"
         android:layout_weight="1"
         android:stepSize="1"
-        android:valueFrom="1"
+        android:valueFrom="0"
         android:valueTo="255"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.slider.Slider
         android:id="@+id/greenSlider"
@@ -43,7 +127,7 @@
         android:layout_marginBottom="224dp"
         android:layout_weight="1"
         android:stepSize="1"
-        android:valueFrom="1"
+        android:valueFrom="0"
         android:valueTo="255"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +144,7 @@
         android:layout_marginBottom="128dp"
         android:layout_weight="1"
         android:stepSize="1"
-        android:valueFrom="1"
+        android:valueFrom="0"
         android:valueTo="255"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
