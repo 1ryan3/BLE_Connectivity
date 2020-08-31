@@ -6,29 +6,63 @@
     android:layout_height="match_parent"
     tools:context=".editGroup">
 
+    <Button
+        android:id="@+id/disconnect2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/disconnect_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:popupBackground="#555"
+        app:layout_constraintBottom_toTopOf="@id/colorSquare"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <View
         android:id="@+id/colorSquare"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:visibility="visible"
+        android:layout_marginTop="16dp"
         android:background="#FFFFFF"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/greenDisp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+
     <TextView
         android:id="@+id/greenDisp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="259dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="64dp"
         android:text="@string/greenValue"
         android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/redSlider"
         app:layout_constraintEnd_toStartOf="@+id/blueDisp"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/redDisp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/colorSquare" />
 
     <TextView
         android:id="@+id/redDisp"
@@ -38,7 +72,9 @@
         android:text="@string/redValue"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/greenDisp"
-        app:layout_constraintStart_toStartOf="@+id/redSlider"
+        app:layout_constraintEnd_toStartOf="@+id/greenDisp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/greenDisp" />
 
     <TextView
@@ -49,14 +85,16 @@
         android:text="@string/blueValue"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/greenDisp"
-        app:layout_constraintEnd_toEndOf="@+id/redSlider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/greenDisp"
         app:layout_constraintTop_toTopOf="@+id/greenDisp" />
 
     <TextView
         android:id="@+id/redDispVal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="1dp"
         android:text="@string/redActual"
         android:textAlignment="center"
         android:textSize="14sp"
@@ -68,7 +106,7 @@
         android:id="@+id/blueDispVal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="1dp"
         android:text="@string/blueActual"
         android:textAlignment="center"
         android:textSize="14sp"
@@ -80,7 +118,7 @@
         android:id="@+id/greenDispVal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="1dp"
         android:text="@string/greenActual"
         android:textAlignment="center"
         android:textSize="14sp"
@@ -92,10 +130,10 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="8dp"
         android:text="@string/redSlider"
-        app:layout_constraintBottom_toTopOf="@+id/greenSlider"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/redSlider" />
 
@@ -104,7 +142,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="96dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="320dp"
         android:layout_weight="1"
@@ -113,14 +151,14 @@
         android:valueTo="255"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/greenDispVal" />
 
     <com.google.android.material.slider.Slider
         android:id="@+id/greenSlider"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="64dp"
         android:layout_marginRight="16dp"
@@ -131,13 +169,14 @@
         android:valueTo="255"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/redSlider" />
 
     <com.google.android.material.slider.Slider
         android:id="@+id/blueSlider"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="64dp"
         android:layout_marginRight="16dp"
@@ -148,7 +187,7 @@
         android:valueTo="255"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/greenSlider" />
 
@@ -156,9 +195,10 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/greenSlider"
-        app:layout_constraintBottom_toTopOf="@+id/blueSlider"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/greenSlider" />
 
@@ -166,11 +206,22 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/blueSlider"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/blueSlider"
-        app:layout_constraintVertical_bias="0.229" />
+        app:layout_constraintTop_toBottomOf="@+id/blueSlider" />
+
+    <Button
+        android:id="@+id/offButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/turnOff"
+        app:layout_constraintBottom_toTopOf="@+id/redSlider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/greenDispVal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

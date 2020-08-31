@@ -11,6 +11,7 @@
     <string name="redValue">"R"</string>
     <string name="blueValue">"B"</string>
     <string name="greenValue">"G"</string>
+    <string name="turnOff">"Turn group off"</string>
     <string name="redActual">""</string>
     <string name="blueActual">""</string>
     <string name="greenActual">""</string>

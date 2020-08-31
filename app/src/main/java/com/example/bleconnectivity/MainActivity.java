@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if(mService.connectBLE()) {
-                Intent deviceConnected = new Intent(MainActivity.this, DeviceConnectedActivity.class);
+                Intent deviceConnected = new Intent(MainActivity.this, editGroup.class);
                 MainActivity.this.startActivity(deviceConnected);
             }
         }

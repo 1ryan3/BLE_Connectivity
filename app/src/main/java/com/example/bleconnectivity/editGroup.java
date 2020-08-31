@@ -7,12 +7,13 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -30,7 +31,7 @@ public class editGroup extends AppCompatActivity {
     private float redValue = 255;
     private float greenValue = 255;
     private float blueValue = 255;
-    private String groupNum;
+    private String selectedLED;
     BLEInterface mService;
     boolean mIsBound = false;
 
@@ -56,8 +57,23 @@ public class editGroup extends AppCompatActivity {
         blue = findViewById(R.id.blueSlider);
         blue.setValue(blueValue);
         blue.addOnChangeListener(blueHandler);
+
+
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner2);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.led_selection_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(selectedListener);
+
+        Button btnTurnOff = findViewById(R.id.offButton);
+        btnTurnOff.setOnClickListener(turnOffHandler);
+
+        Button btnDisconnect = (Button) findViewById(R.id.disconnect2);
+        btnDisconnect.setOnClickListener(disconnectHandler);
+
         bindService();
-        groupNum = getIntent().getStringExtra("groupNumber");
     }
 
     private Slider.OnChangeListener redHandler = new Slider.OnChangeListener() {
@@ -92,7 +108,7 @@ public class editGroup extends AppCompatActivity {
 
     private void setColor() {
 
-        int temp = Character.getNumericValue(groupNum.charAt(groupNum.length() - 1)) - 1;
+        int temp = Character.getNumericValue(selectedLED.charAt(selectedLED.length() - 1)) - 1;
 
         byte[] data = new byte[4];
         data[0] = (byte) redValue;
@@ -106,6 +122,37 @@ public class editGroup extends AppCompatActivity {
         int color = (0xff) << 24 | ((int)redValue & 0xff) << 16 | ((int)greenValue & 0xff) << 8 | ((int)blueValue & 0xff);
         colorSquare.setBackgroundColor(color);
     }
+
+    private View.OnClickListener disconnectHandler = new View.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            mService.disconnectBLE();
+            Intent intentMain = new Intent(editGroup.this, MainActivity.class);
+            editGroup.this.startActivity(intentMain);
+        }
+    };
+
+    private View.OnClickListener turnOffHandler = new View.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            byte data[] = {0,0,0,0};
+            int temp = Character.getNumericValue(selectedLED.charAt(selectedLED.length() - 1)) - 1;
+            data[3] = (byte) (temp | 0xF0);
+            mService.colorSet(data);
+        }
+    };
+
+    private Spinner.OnItemSelectedListener selectedListener = new Spinner.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            selectedLED = parent.getItemAtPosition(pos).toString();
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+            selectedLED = "Group 1";
+        }
+    };
 
     private void bindService(){
         Intent serviceBindIntent =  new Intent(this, BLEInterface.class);

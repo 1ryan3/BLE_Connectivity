@@ -20,7 +20,6 @@
             android:exported="true"></service>
 
         <activity android:name=".editGroup" />
-        <activity android:name=".DeviceConnectedActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
