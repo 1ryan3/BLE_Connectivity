@@ -2,7 +2,7 @@
 
 - Purpose built android application for a personal desk lighting project.
 - Utilizes Arduino IOT 33 to facilitate WS2812B addressable LED programming and communications with Android application.
-- Arduino code is located in separate project, and is in need of more development as it is more for testing right now.
+- Arduino code is located in separate project (https://github.com/1ryan3/ArduinoBLE_LEDController), and is in need of more development as it is more for testing right now.
 - Currently the application allows for 5 channels of control, but could easily expand to the support the full 8 PWM outputs of the Arduino IOT 33.
 
 
